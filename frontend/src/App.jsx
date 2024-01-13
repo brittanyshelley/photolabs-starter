@@ -16,3 +16,16 @@ const App = () => {
 };
 
 export default App;
+
+// const App = () => {
+//   const photos = [...Array(3)];
+//   const photoListItems = photos.map((photo, i) =>
+//     <PhotoListItem key={i} photo={sampleDataForPhotoListItem} imageSource={sampleDataForPhotoListItem.imageSource}/>
+//   );
+
+//   return (
+//     <div className="App">
+//       {photoListItems}
+//     </div>
+//   );
+// };

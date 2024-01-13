@@ -1,16 +1,20 @@
-import React, { useCallback, useState } from 'react';
-
+import React, { useState } from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
-function PhotoFavButton() {
+const PhotoFavButton = () => {
+  const [isFavourited, setIsFavourited] = useState(false);
+
+  const handleFavClick = () => {
+    console.log('Favourite icon clicked!');
+    setIsFavourited(!isFavourited); // Toggle the favourite state
+  };
+
   return (
-    <div className="photo-list__fav-icon">
-      <div className="photo-list__fav-icon-svg">
-        {/* Insert React */}
-      </div>
-    </div>
+    <button className="photo-list__fav-icon" onClick={handleFavClick}>
+      <FavIcon selected={isFavourited} /> {/* Pass the selected prop to determine the icon appearance */}
+    </button>
   );
-}
+};
 
 export default PhotoFavButton;
