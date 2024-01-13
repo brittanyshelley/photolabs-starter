@@ -58,7 +58,8 @@ const sampleDataForPhotoList = [
 ];
 
 const PhotoList = () => {
-  const items = sampleDataForPhotoList.map((photo, id) => <PhotoListItem key={id} photo={photo} />);
+  //photo would be assigned to the first object in the list (first arguement will be the first object, second arguement will be the index of that object in the array)
+  const items = sampleDataForPhotoList.map((photo, index) => <PhotoListItem key={index} photo={photo} />);
 
   return (
     <ul className="photo-list">
