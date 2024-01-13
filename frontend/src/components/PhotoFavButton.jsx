@@ -6,7 +6,6 @@ const PhotoFavButton = () => {
   const [isFavourited, setIsFavourited] = useState(false);
 
   const handleFavClick = () => {
-    console.log('Favourite icon clicked!');
     setIsFavourited(!isFavourited); // Toggle the favourite state
   };
 
