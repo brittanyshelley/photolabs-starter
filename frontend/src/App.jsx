@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-
-import PhotoList from './components/PhotoList';
-import TopNavigationBar from './components/TopNavigationBar';
+import HomeRoute from 'routes/HomeRoute';
+// import PhotoList from './components/PhotoList';
+// import TopNavigationBar from './components/TopNavigationBar';
 import './App.scss';
 
 
@@ -11,13 +11,14 @@ import './App.scss';
 
 const App = () => {
 
-  const [likes, setLikes] = useState(0);
+  // const [likes, setLikes] = useState(0);
 
 
   return (
     <div className="App">
-      <TopNavigationBar likes={likes}/>
-      <PhotoList likes={likes} setLikes={setLikes}/>
+      <HomeRoute/>
+      {/* <TopNavigationBar likes={likes}/>
+      <PhotoList likes={likes} setLikes={setLikes}/> */}
     </div>
   );
 };
