@@ -5,6 +5,7 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 
+
 const PhotoListItem = ({ photo, likes, setLikes }) => {
   const { urls, user, location } = photo;
 

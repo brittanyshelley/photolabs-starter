@@ -4,6 +4,7 @@ import '../styles/HomeRoute.scss';
 import TopNavigationBar from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
+
 const HomeRoute = () => {
 
   const [likes, setLikes] = useState(0);
