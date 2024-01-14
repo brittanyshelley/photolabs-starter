@@ -6,11 +6,7 @@ const PhotoFavButton = ({ likes, setLikes }) => {
   const [isFavourited, setIsFavourited] = useState(false);
 
   const handleFavClick = () => {
-    if (isFavourited) {
-      setLikes(likes - 1);
-    } else {
-      setLikes(likes + 1);
-    }
+    isFavourited ? setLikes(likes - 1) : setLikes(likes + 1);
 
     setIsFavourited(!isFavourited); // Toggle the favourite state
   };
