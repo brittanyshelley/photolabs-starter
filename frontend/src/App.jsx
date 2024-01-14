@@ -1,7 +1,7 @@
 import React from 'react';
 
 import HomeRoute from 'routes/HomeRoute';
-// import PhotoList from './components/PhotoList';
+import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 // import TopNavigationBar from './components/TopNavigationBar';
 import './App.scss';
 
@@ -16,7 +16,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <HomeRoute/>
+      <HomeRoute />
+      <PhotoDetailsModal/>
       {/* <TopNavigationBar likes={likes}/>
       <PhotoList likes={likes} setLikes={setLikes}/> */}
     </div>

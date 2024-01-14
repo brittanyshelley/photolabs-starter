@@ -60,7 +60,7 @@ import photos from "../mocks/photos.js";
 
 const PhotoList = (props) => {
   //photo would be assigned to the first object in the list (first arguement will be the first object, second arguement will be the index of that object in the array)
-  const items = photos.map((photo, id) => <PhotoListItem key={id} photo={photo} likes={props.likes} setLikes={props.setLikes}/>);
+  const items = photos.map((photo, index) => <PhotoListItem key={index} photo={photo} likes={props.likes} setLikes={props.setLikes}/>);
 
   return (
     <ul className="photo-list">
