@@ -2,12 +2,8 @@ import React, { useState} from 'react';
 
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
-// import TopNavigationBar from './components/TopNavigationBar';
 import './App.scss';
 import photos from "./mocks/photos.js";
-
-
-// Note: Rendering a single component to build components in isolation
 
 
 const App = () => {
@@ -26,8 +22,6 @@ const App = () => {
       <HomeRoute toggleModal={toggleModal} photos={photos} setActivePhoto={setActivePhoto} likes={likes} setLikes={setLikes} />
       {/* if displayModal is false then it wont show at all. If one side of && is false it won't display at all. reads left to right */}
       {activePhoto && <PhotoDetailsModal toggleModal={toggleModal} photos={photos} activePhoto={activePhoto} setActivePhoto={setActivePhoto} likes={likes} setLikes={setLikes} />}
-      {/* <TopNavigationBar likes={likes}/>
-      <PhotoList likes={likes} setLikes={setLikes}/> */}
     </div>
   );
 };

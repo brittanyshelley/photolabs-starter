@@ -7,7 +7,6 @@ const PhotoFavButton = ({ likes, setLikes, photo }) => {
   const isFavorited = likes.includes(String(photo.id));
 
   const handleFavClick = () => {
-    // isFavourited ? setLikes(likes - 1) : setLikes(likes + 1);
     setLikes(prev => {
       let newLikes = [...prev];
       if (isFavorited) {
