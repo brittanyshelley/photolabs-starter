@@ -5,9 +5,7 @@ import TopNavigationBar from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
 
-const HomeRoute = ({ toggleModal, photos, setActivePhoto }) => {
-
-  const [likes, setLikes] = useState([]);
+const HomeRoute = ({ toggleModal, photos, setActivePhoto, likes, setLikes }) => {
 
   return (
     <div className="home-route">

@@ -4,16 +4,16 @@ import '../styles/PhotoFavButton.scss';
 
 const PhotoFavButton = ({ likes, setLikes, photo }) => {
   //
-  const isFavorited = likes.includes(photo.id);
+  const isFavorited = likes.includes(String(photo.id));
 
   const handleFavClick = () => {
     // isFavourited ? setLikes(likes - 1) : setLikes(likes + 1);
     setLikes(prev => {
       let newLikes = [...prev];
       if (isFavorited) {
-        newLikes = newLikes.filter(id => id !== photo.id);
+        newLikes = newLikes.filter(id => id !== String(photo.id));
       } else {
-        newLikes.push(photo.id);
+        newLikes.push(String(photo.id));
       }
       return newLikes;
     });
