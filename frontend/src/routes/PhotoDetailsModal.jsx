@@ -6,7 +6,7 @@ import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 
-const PhotoDetailsModal = ({ toggleModal, activePhoto, photos, setActivePhoto }) => {
+const PhotoDetailsModal = ({ toggleModal, activePhoto, photos, setActivePhoto, likes, setLikes }) => {
 
   console.log(activePhoto);
 
@@ -17,10 +17,10 @@ const PhotoDetailsModal = ({ toggleModal, activePhoto, photos, setActivePhoto })
         <img src={closeSymbol} alt="close symbol" onClick={()=>setActivePhoto(false)} />
       </button>
       <section className="photo-details-modal_images" >
-        <PhotoFavButton />
+        <PhotoFavButton likes={likes} setLikes={setLikes} photo={activePhoto}/>
         <img src={activePhoto.urls.full} alt="full" className="photo-details-modal_image" />
         <header className="photo-details-modal_header">Similar Photos</header>
-        <PhotoList photos={photos} toggleModal={toggleModal} setActivePhoto={setActivePhoto} />
+        <PhotoList photos={photos} toggleModal={toggleModal} setActivePhoto={setActivePhoto} likes={likes} setLikes={setLikes} />
       </section>
     </div >
   );

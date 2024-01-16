@@ -16,7 +16,7 @@ const PhotoListItem = ({ photo, likes, setLikes, toggleModal, setActivePhoto }) 
   return (
 
     <div className="photo-list__item">
-      <PhotoFavButton likes={likes} setLikes={setLikes} />
+      <PhotoFavButton likes={likes} setLikes={setLikes} photo={photo} />
       <img className="photo-list__image" src={urls.regular} alt="photo" onClick={handleClick} />
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={user.profile} alt="profilephoto" />

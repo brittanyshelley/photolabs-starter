@@ -12,7 +12,7 @@ import photos from "./mocks/photos.js";
 
 const App = () => {
 
-  // const [likes, setLikes] = useState(0);
+  const [likes, setLikes] = useState([]);
   const [displayModal, setDisplayModal] = useState(false);
 
   const toggleModal = () => {
@@ -23,9 +23,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <HomeRoute toggleModal={toggleModal} photos={photos} setActivePhoto={setActivePhoto}/>
+      <HomeRoute toggleModal={toggleModal} photos={photos} setActivePhoto={setActivePhoto} likes={likes} setLikes={setLikes} />
       {/* if displayModal is false then it wont show at all. If one side of && is false it won't display at all. reads left to right */}
-      {activePhoto && <PhotoDetailsModal toggleModal={toggleModal} photos={photos} activePhoto={activePhoto} setActivePhoto={setActivePhoto} />}
+      {activePhoto && <PhotoDetailsModal toggleModal={toggleModal} photos={photos} activePhoto={activePhoto} setActivePhoto={setActivePhoto} likes={likes} setLikes={setLikes} />}
       {/* <TopNavigationBar likes={likes}/>
       <PhotoList likes={likes} setLikes={setLikes}/> */}
     </div>

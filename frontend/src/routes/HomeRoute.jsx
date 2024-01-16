@@ -7,7 +7,7 @@ import PhotoList from 'components/PhotoList';
 
 const HomeRoute = ({ toggleModal, photos, setActivePhoto }) => {
 
-  const [likes, setLikes] = useState(0);
+  const [likes, setLikes] = useState([]);
 
   return (
     <div className="home-route">
