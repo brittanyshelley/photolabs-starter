@@ -19,11 +19,13 @@ const App = () => {
     setDisplayModal(!displayModal);
   };
 
+  const [activePhoto, setActivePhoto] = useState(false);
+
   return (
     <div className="App">
-      <HomeRoute toggleModal={toggleModal} photos={photos}/>
+      <HomeRoute toggleModal={toggleModal} photos={photos} setActivePhoto={setActivePhoto}/>
       {/* if displayModal is false then it wont show at all. If one side of && is false it won't display at all. reads left to right */}
-      {displayModal && <PhotoDetailsModal toggleModal={toggleModal} photos={photos} />}
+      {activePhoto && <PhotoDetailsModal toggleModal={toggleModal} photos={photos} activePhoto={activePhoto} setActivePhoto={setActivePhoto} />}
       {/* <TopNavigationBar likes={likes}/>
       <PhotoList likes={likes} setLikes={setLikes}/> */}
     </div>
