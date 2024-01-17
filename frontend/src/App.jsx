@@ -1,42 +1,30 @@
-import React, { useState} from 'react';
+import React from 'react';
 
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import './App.scss';
 import photos from "./mocks/photos.js";
+import useApplicationData from "./hooks/useApplicationData.js";
 
 
 const App = () => {
 
-  const [likes, setLikes] = useState([]);
-  const [displayModal, setDisplayModal] = useState(false);
+  const {
+    state,
+    onPhotoSelect,
+    updateToFavPhotoIds,
+    onLoadTopic,
+    onClosePhotoDetailsModal,
+  } = useApplicationData();
 
-  const toggleModal = () => {
-    setDisplayModal(!displayModal);
-  };
-
-  const [activePhoto, setActivePhoto] = useState(false);
 
   return (
     <div className="App">
-      <HomeRoute toggleModal={toggleModal} photos={photos} setActivePhoto={setActivePhoto} likes={likes} setLikes={setLikes} />
+      <HomeRoute toggleModal={onClosePhotoDetailsModal} photos={photos} setActivePhoto={onPhotoSelect} likes={state.likes} setLikes={updateToFavPhotoIds} />
       {/* if displayModal is false then it wont show at all. If one side of && is false it won't display at all. reads left to right */}
-      {activePhoto && <PhotoDetailsModal toggleModal={toggleModal} photos={photos} activePhoto={activePhoto} setActivePhoto={setActivePhoto} likes={likes} setLikes={setLikes} />}
+      {state.activePhoto && <PhotoDetailsModal toggleModal={onClosePhotoDetailsModal} photos={photos} activePhoto={state.activePhoto} setActivePhoto={onPhotoSelect} likes={state.likes} setLikes={updateToFavPhotoIds} />}
     </div>
   );
 };
 
 export default App;
-
-// const App = () => {
-//   const photos = [...Array(3)];
-//   const photoListItems = photos.map((photo, i) =>
-//     <PhotoListItem key={i} photo={sampleDataForPhotoListItem} imageSource={sampleDataForPhotoListItem.imageSource}/>
-//   );
-
-//   return (
-//     <div className="App">
-//       {photoListItems}
-//     </div>
-//   );
-// };

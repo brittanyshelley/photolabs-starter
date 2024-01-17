@@ -3,19 +3,21 @@ import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 const PhotoFavButton = ({ likes, setLikes, photo }) => {
-  //
-  const isFavorited = likes.includes(String(photo.id));
+
+  let isFavorited = false;
+  if (Array.isArray(likes)) {
+    isFavorited = likes.includes(String(photo.id));
+  }
 
   const handleFavClick = () => {
-    setLikes(prev => {
-      let newLikes = [...prev];
-      if (isFavorited) {
-        newLikes = newLikes.filter(id => id !== String(photo.id));
-      } else {
-        newLikes.push(String(photo.id));
-      }
-      return newLikes;
-    });
+
+    let newLikes = [...likes];
+    if (isFavorited) {
+      newLikes = newLikes.filter(id => id !== String(photo.id));
+    } else {
+      newLikes.push(String(photo.id));
+    }
+    setLikes(newLikes);
   };
 
   return (
