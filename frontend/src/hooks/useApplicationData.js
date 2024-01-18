@@ -33,8 +33,6 @@ const reducer = (state, action) => {
     return ({ ...state, topics: action.data });
   case ACTIONS.SET_PHOTO_DATA:
     return ({ ...state, photos: action.payload });
-  case ACTIONS:
-    return { ...state, photoData: action.payload };
   default:
     throw new Error(
       `Tried to reduce with unsupported action type: ${action.type}`
