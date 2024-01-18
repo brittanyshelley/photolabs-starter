@@ -78,26 +78,15 @@ const useApplicationData = () => {
   }, []);
 
   React.useEffect(() => {
-    if (state.topic) {
-      console.log(state.topic);
-      axios.get(`http://localhost:8001/api/topics/photos/${state.topic}`)
-        .then(res => {
-          dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: res.data });
-        })
-        .catch(error => {
-          console.error('Error fetching photos by topic:', error);
-        });
-    } else {
-      axios.get('http://localhost:8001/api/photos')
-        .then(res => {
-          console.log(res);
-          dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: res.data });
-        })
-        .catch(error => {
-          console.error('Error fetching photos:', error);
-        });
-    }
-  }, [state.topic]);
+    axios.get('http://localhost:8001/api/photos')
+      .then(res => {
+        console.log(res);
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: res.data });
+      })
+      .catch(error => {
+        console.error('Error fetching photos:', error);
+      });
+  }, []);
 
   return {
     state,
