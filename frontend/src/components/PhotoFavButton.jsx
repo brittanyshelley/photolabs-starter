@@ -22,7 +22,7 @@ const PhotoFavButton = ({ likes, setLikes, photo }) => {
 
   return (
     <button className="photo-list__fav-icon" onClick={handleFavClick}>
-      <FavIcon selected={isFavorited} /> {/* Pass the selected prop to determine the icon appearance */}
+      <FavIcon selected={isFavorited} />
     </button>
   );
 };
