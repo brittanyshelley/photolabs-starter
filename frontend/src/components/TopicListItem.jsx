@@ -5,11 +5,11 @@ import "../styles/TopicListItem.scss";
 
 
 
-const TopicListItem = ({ topic }) => {
-  const { title } = topic;
+const TopicListItem = ({ topics, setTopic }) => {
+  const { title, id } = topics;
 
   return (
-    <div className="topic-list__item">
+    <div style={{cursor: "pointer"}} className="topic-list__item" onClick={() => setTopic(id)}>
       {title}
     </div>
   );

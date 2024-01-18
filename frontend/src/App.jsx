@@ -12,16 +12,16 @@ const App = () => {
     state,
     onPhotoSelect,
     updateToFavPhotoIds,
-    // onLoadTopic,
+    setTopic,
     onClosePhotoDetailsModal,
   } = useApplicationData();
 
 
   return (
     <div className="App">
-      <HomeRoute toggleModal={onClosePhotoDetailsModal} photos={state.photos} setActivePhoto={onPhotoSelect} likes={state.likes} setLikes={updateToFavPhotoIds} />
+      <HomeRoute toggleModal={onClosePhotoDetailsModal} photos={state.photos} setActivePhoto={onPhotoSelect} likes={state.likes} setLikes={updateToFavPhotoIds} topics={state.topics} setTopic={setTopic} />
       {/* if displayModal is false then it wont show at all. If one side of && is false it won't display at all. reads left to right */}
-      {state.activePhoto && <PhotoDetailsModal toggleModal={onClosePhotoDetailsModal} photos={state.photos} activePhoto={state.activePhoto} setActivePhoto={onPhotoSelect} likes={state.likes} setLikes={updateToFavPhotoIds} />}
+      {state.activePhoto && <PhotoDetailsModal toggleModal={onClosePhotoDetailsModal} photos={state.photos} activePhoto={state.activePhoto} setActivePhoto={onPhotoSelect} likes={state.likes} setLikes={updateToFavPhotoIds} topics={state.topics} />}
     </div>
   );
 };

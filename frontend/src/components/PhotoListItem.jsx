@@ -6,8 +6,8 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 const PhotoListItem = ({ photo, likes, setLikes, toggleModal, setActivePhoto }) => {
-  const { urls, user, location } = photo;
 
+  console.log(photo);
   const handleClick = () => {
     toggleModal();
     setActivePhoto(photo);
@@ -17,11 +17,11 @@ const PhotoListItem = ({ photo, likes, setLikes, toggleModal, setActivePhoto }) 
 
     <div className="photo-list__item">
       <PhotoFavButton likes={likes} setLikes={setLikes} photo={photo} />
-      <img className="photo-list__image" src={urls.regular} alt="photo" onClick={handleClick} />
+      <img className="photo-list__image" src={photo.urls.regular} alt="photo" onClick={handleClick} />
       <div className="photo-list__user-details">
-        <img className="photo-list__user-profile" src={user.profile} alt="profilephoto" />
-        <div className="photo-list__user-info">{user.name}
-          <p className="photo-list__user-location">{location.city}, {location.country}</p>
+        <img className="photo-list__user-profile" src={photo.user.profile} alt="profilephoto" />
+        <div className="photo-list__user-info">{photo.user.name}
+          <p className="photo-list__user-location">{photo.location.city}, {photo.location.country}</p>
         </div>
       </div>
     </div>
