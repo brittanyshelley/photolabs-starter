@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer } from 'react';
 import axios from 'axios';
 
 const initialState = {
@@ -28,7 +28,7 @@ const reducer = (state, action) => {
   case ACTIONS.CLOSE_MODAL:
     return ({ ...state, displayModal: !state.displayModal });
   case ACTIONS.SET_TOPIC_DATA:
-    return ({ ...state, topics: action.data });
+    return ({ ...state, topics: action.payload });
   case ACTIONS.GET_PHOTOS_BY_TOPICS:
     return ({ ...state, topics: action.data });
   case ACTIONS.SET_PHOTO_DATA:
@@ -76,21 +76,33 @@ const useApplicationData = () => {
   }, []);
 
   React.useEffect(() => {
-    axios.get('http://localhost:8001/api/photos')
-      .then(res => {
-        console.log(res);
-        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: res.data });
-      })
-      .catch(error => {
-        console.error('Error fetching photos:', error);
-      });
-  }, []);
+    if (state.topic) {
+      // Construct the URL with the specific topic_id
+      const url = `http://localhost:8001/api/topics/photos/${state.topic}`;
+      axios.get(url)
+        .then(res => {
+          console.log(res);
+          dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: res.data });
+        })
+        .catch(error => {
+          console.error('Error fetching photos by topic:', error);
+        });
+    } else {
+      axios.get('http://localhost:8001/api/photos')
+        .then(res => {
+          console.log(res);
+          dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: res.data });
+        })
+        .catch(error => {
+          console.error('Error fetching photos:', error);
+        });
+    }
+  }, [state.topic]);
 
   return {
     state,
     onPhotoSelect: setActivePhoto,
     updateToFavPhotoIds: setLikes,
-    // onLoadTopic: setTopic,
     onClosePhotoDetailsModal: toggleModal
   };
 };
