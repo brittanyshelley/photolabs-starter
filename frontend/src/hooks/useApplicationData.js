@@ -1,14 +1,6 @@
 import React, { useReducer } from 'react';
 import axios from 'axios';
 
-const initialState = {
-  photos: [],
-  topics: [],
-  likes: {},
-  photo: null,
-  topic: null,
-  favPhoto: false
-};
 
 export const ACTIONS = {
   UPDATE_PHOTO_FAV: 'UPDATE_PHOTO_FAV',
@@ -30,7 +22,7 @@ const reducer = (state, action) => {
   case ACTIONS.SET_TOPIC_DATA:
     return ({ ...state, topics: action.payload });
   case ACTIONS.GET_PHOTOS_BY_TOPICS:
-    return ({ ...state, topics: action.data });
+    return ({ ...state, photos: action.payload });
   case ACTIONS.SET_PHOTO_DATA:
     return ({ ...state, photos: action.payload });
   default:
@@ -44,11 +36,11 @@ const useApplicationData = () => {
 
 
   const [state, dispatch] = useReducer(reducer, {
-
     likes: [],
     displayModal: false,
-    activePhoto: null
-
+    activePhoto: null,
+    topics: [],
+    photos: []
   });
 
   const setActivePhoto = (data) => {
@@ -81,7 +73,6 @@ const useApplicationData = () => {
       const url = `http://localhost:8001/api/topics/photos/${state.topic}`;
       axios.get(url)
         .then(res => {
-          console.log(res);
           dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: res.data });
         })
         .catch(error => {
