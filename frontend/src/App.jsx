@@ -13,7 +13,7 @@ const App = () => {
     state,
     onPhotoSelect,
     updateToFavPhotoIds,
-    onLoadTopic,
+    // onLoadTopic,
     onClosePhotoDetailsModal,
   } = useApplicationData();
 
