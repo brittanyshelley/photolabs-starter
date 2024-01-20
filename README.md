@@ -22,6 +22,7 @@ Read `backend/readme` for further setup details.
 cd backend
 npm start
 ```
+
 ## Screenshots
 
 !["PhotolabsMain"](https://github.com/brittanyshelley/photolabs-starter/blob/main/docs/PhotolabsMain.jpg?raw=true)
