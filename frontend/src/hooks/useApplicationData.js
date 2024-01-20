@@ -34,6 +34,7 @@ const reducer = (state, action) => {
     );
   }
 };
+
 // Hook to manage state of application, includes functions to update state,
 // fetch data from an API and return the state and functions for interacting with it
 const useApplicationData = () => {
@@ -62,36 +63,44 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.SET_TOPIC, data: topicId });
   };
 
+  // Function to fetch data from an API and update the state
   useEffect(() => {
-    fetch("/api/photos")
-      .then((response) => response.json())
-      .then((data) => {
-        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data });
-      });
-  }, []);
+    // Define an asynchronous function to handle fetching data
+    const fetchData = async() => {
+      try {
+        // Use Promise.all to simultaneously fetch data from both endpoints
+        const [photosResponse, topicsResponse] = await Promise.all([
+          // Fetch photo data from the "/api/photos" endpoint and parse the response as JSON
+          fetch("/api/photos").then((response) => response.json()),
+          // Fetch topic data from the "/api/topics" endpoint and parse the response as JSON
+          fetch("/api/topics").then((response) => response.json())
+        ]);
 
-  useEffect(() => {
-    fetch("/api/topics")
-      .then((response) => response.json())
-      .then((data) => {
-        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data });
-      });
-  }, []);
+        // Dispatch an action to update the state with the fetched photo data
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photosResponse });
+        // Dispatch an action to update the state with the fetched topic data
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topicsResponse });
 
-  useEffect(() => {
-    if (state.topic) {
-      const url = `/api/topics/photos/${state.topic}`;
-      fetch(url)
-        .then((response) => response.json())
-        .then((data) => {
-          dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data });
-        })
-        .catch((error) => {
-          console.error(`Error fetching photos for topic ${state.topic}:`, error);
-        });
-    }
+        // If a topic is selected, fetch photos related to that topic
+        if (state.topic) {
+          // Construct the URL for fetching photos by topic
+          const url = `/api/topics/photos/${state.topic}`;
+          // Fetch photos by topic and parse the response as JSON
+          const photosByTopicResponse = await fetch(url).then((response) => response.json());
+          // Dispatch an action to update the state with the fetched photos by topic
+          dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: photosByTopicResponse });
+        }
+      } catch (error) {
+        // Handle errors by logging them to the console
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    // Call the fetchData function when the component mounts or when the topic changes
+    fetchData();
   }, [state.topic]);
 
+  // Return the current state and functions for interacting with it
   return {
     state,
     onPhotoSelect: setActivePhoto,
