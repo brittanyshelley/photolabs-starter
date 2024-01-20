@@ -7,7 +7,6 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = ({ photo, likes, setLikes, toggleModal, setActivePhoto }) => {
 
-  console.log(photo);
   const handleClick = () => {
     toggleModal();
     setActivePhoto(photo);

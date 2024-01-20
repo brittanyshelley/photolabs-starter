@@ -1,5 +1,4 @@
 import { useReducer, useEffect } from 'react';
-// import axios from 'axios';
 
 
 export const ACTIONS = {
@@ -13,15 +12,14 @@ export const ACTIONS = {
 };
 
 
-
 const reducer = (state, action) => {
   switch (action.type) {
   case ACTIONS.UPDATE_PHOTO_FAV:
-    return ({ ...state, likes: action.data });
+    return { ...state, likes: action.data };
   case ACTIONS.SELECT_PHOTO:
-    return ({ ...state, activePhoto: action.data });
+    return { ...state, activePhoto: action.data };
   case ACTIONS.CLOSE_MODAL:
-    return ({ ...state, displayModal: !state.displayModal });
+    return { ...state, displayModal: !state.displayModal };
   case 'SET_PHOTO_DATA':
     return { ...state, photos: action.payload };
   case 'SET_TOPIC_DATA':
@@ -36,7 +34,8 @@ const reducer = (state, action) => {
     );
   }
 };
-
+// Hook to manage state of application, includes functions to update state,
+// fetch data from an API and return the state and functions for interacting with it
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, {
     likes: [],
@@ -46,7 +45,6 @@ const useApplicationData = () => {
     photos: [],
     topic: null
   });
-
 
   const setActivePhoto = (data) => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, data: data });
@@ -82,7 +80,7 @@ const useApplicationData = () => {
 
   useEffect(() => {
     if (state.topic) {
-      const url = `http://localhost:8001/api/topics/photos/${state.topic}`;
+      const url = `/api/topics/photos/${state.topic}`;
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
