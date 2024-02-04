@@ -27,11 +27,13 @@
 .photo-details-modal__images {
   margin-left: 36px;
   margin-top: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
 .photo-details-modal__image {
   max-width: 95%;
-  // border-radius: 8px;
+  border-radius: 8px;
   border: 1px solid #E6E6E6;
   background-color: #F5F5F5;
 }
@@ -77,3 +79,82 @@
   font-size: 12px;
   margin-left: 8px;
 }
+// 	/* Optimized CSS code */
+
+// /* Shorthand properties */
+// .photo-details-modal {
+//   background-color: white;
+//   box-shadow: 0 0 0 50vmax rgba(0,0,0,.5);
+//   position: absolute;
+//   top: 55%;
+//   left: 50%;
+//   transform: translate(-50%, -40%);
+//   height: 80%;
+//   width: 55%;
+//   overflow-y: scroll;
+//   border-radius: 12px;
+// }
+
+// .photo-details-modal__close-button {
+//   background-color: white;
+//   border: none;
+//   color: white;
+//   text-align: center;
+//   text-decoration: none;
+//   display: inline-block;
+//   font-size: 16px;
+//   cursor: pointer;
+//   margin: 16px 0 0 16px; /* Shorthand margin */
+// }
+
+// .photo-details-modal__images {
+//   margin: 8px 0 0 36px; /* Shorthand margin */
+// }
+
+// .photo-details-modal__image {
+//   max-width: 95%;
+//   border-radius: 8px;
+//   // border: 1px solid #E6E6E6;
+//   // background-color: #F5F5F5;
+// }
+
+// .photo-details-modal__top-bar {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   margin: 8px 16px 16px; /* Shorthand margin */
+//   align-items: center;
+// }
+
+// .photo-details-modal__photographer-details {
+//   display: flex;
+//   font-size: 16px;
+// }
+
+// .photo-details-modal__header {
+//   font-size: 18px;
+//   font-weight: 500;
+//   color: #1e1e1e;
+//   margin: 24px 0;
+//   width: 90%;
+// }
+
+// .photo-details-modal__photographer-location {
+//   color: #838383;
+// }
+
+// .photo-details-modal__photographer-profile {
+//   object-fit: cover;
+//   border-radius: 100%;
+//   vertical-align: middle;
+//   margin-right: 8px;
+//   width: 40px;
+//   height: 40px;
+// }
+
+// .photo-details-modal__photographer-info {
+//   margin-top: 5px;
+//   font-weight: 700;
+//   font-size: 12px;
+//   margin-left: 8px;
+// }

@@ -65,33 +65,25 @@ const useApplicationData = () => {
 
   // Function to fetch data from an API and update the state
   useEffect(() => {
-    // Define an asynchronous function to handle fetching data
     const fetchData = async() => {
       try {
         // Use Promise.all to simultaneously fetch data from both endpoints
         const [photosResponse, topicsResponse] = await Promise.all([
-          // Fetch photo data from the "/api/photos" endpoint and parse the response as JSON
           fetch("/api/photos").then((response) => response.json()),
-          // Fetch topic data from the "/api/topics" endpoint and parse the response as JSON
           fetch("/api/topics").then((response) => response.json())
         ]);
 
-        // Dispatch an action to update the state with the fetched photo data
+        // Update the state with the fetched photo data and topic data
         dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photosResponse });
-        // Dispatch an action to update the state with the fetched topic data
         dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topicsResponse });
 
         // If a topic is selected, fetch photos related to that topic
         if (state.topic) {
-          // Construct the URL for fetching photos by topic
           const url = `/api/topics/photos/${state.topic}`;
-          // Fetch photos by topic and parse the response as JSON
           const photosByTopicResponse = await fetch(url).then((response) => response.json());
-          // Dispatch an action to update the state with the fetched photos by topic
           dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: photosByTopicResponse });
         }
       } catch (error) {
-        // Handle errors by logging them to the console
         console.error("Error fetching data:", error);
       }
     };
