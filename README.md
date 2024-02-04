@@ -25,4 +25,4 @@ npm start
 ## Screenshots
 
 !["PhotolabsMain"](https://github.com/brittanyshelley/photolabs-starter/blob/main/docs/PhotolabsMain.jpg?raw=true)
-!["PhotoModal"](https://github.com/brittanyshelley/photolabs-starter/blob/main/docs/PhotoModal.jpg?raw=true)
+!["PhotoModal"](https://github.com/brittanyshelley/photolabs-starter/blob/main/docs/PhotoModal.jpeg?raw=true)
